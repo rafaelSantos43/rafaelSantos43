@@ -6,6 +6,11 @@ import { useState } from 'react'
 export default function Post({post }){
    const [like, setLike] = useState(post.like)
    const [isliked, setIsliked] = useState(false)
+
+   const likeAction = ()=>{
+    setLike(isliked? like-1 : like+1)
+    setIsliked(!isliked)
+   }
     return (
         <div className='post'>
             <div className='postWrapper'>
@@ -27,15 +32,15 @@ export default function Post({post }){
 
                 <div className='postBottom'>
                     <div className='postBottomLeft'>
-                        <ThumbUp  className='likeIcon'/>
-                        <Favorite className='likeIcon' />
+                        <ThumbUp  className='likeIcon' onClick={likeAction}/>
+                        <Favorite className='likeIcon' onClick={likeAction}/>
                         <span className='postLikeCounter'>{like} people like it</span>
                     </div>
 
                    
 
                     <div className='postBottomRight'>
-                        <div className='postCommentText'>{comment} comments</div>
+                        <div className='postCommentText'>{} comments</div>
                     </div>
                 </div>
             </div>
